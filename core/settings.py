@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure--9lwhjze-bdds5c%&)y2uep6r-(%2r55tmcwywy!2cgaeebq(k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -38,7 +38,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # должно быть первым
+    'django.middleware.common.CommonMiddleware',  # это вторым
 ]
+
+
+CORS_ALLOWED_ORIGINS = [
+    "*"
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
 
 ROOT_URLCONF = 'core.urls'
 
